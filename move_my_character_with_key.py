@@ -25,6 +25,9 @@ def IDLE():
                     center_y += 10
                 elif event.key == SDLK_DOWN:
                     center_y -= 10
+                # 화면 경계 체크
+                center_x = max(0, min(center_x, 800))
+                center_y = max(0, min(center_y, 600))
 
 open_canvas()
 character = load_image('SamuraiSheet.png')
