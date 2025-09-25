@@ -7,14 +7,28 @@ def IDLE():
     running = True
     while running:
         clear_canvas()
-        ground.draw(400, 90)
+        grass.draw(400, 90)
         character.clip_draw(frame * 128, 1152, 128, 128, center_x, center_y, 128, 128)
         update_canvas()
         frame = (frame + 1) % 6
+        for event in get_events():
+            if event.type == SDL_QUIT:
+                running = False
+            elif event.type == SDL_KEYDOWN:
+                if event.key == SDLK_ESCAPE:
+                    running = False
+                elif event.key == SDLK_LEFT:
+                    center_x -= 10
+                elif event.key == SDLK_RIGHT:
+                    center_x += 10
+                elif event.key == SDLK_UP:
+                    center_y += 10
+                elif event.key == SDLK_DOWN:
+                    center_y -= 10
 
 open_canvas()
 character = load_image('SamuraiSheet.png')
-ground = load_image('TUK_GROUND.png')
+grass = load_image('TUK_GROUND.png')
 
 IDLE()
 
