@@ -7,12 +7,14 @@ def IDLE():
     running = True
     while running:
         clear_canvas()
+        ground.draw(400, 90)
         character.clip_draw(frame * 128, 1152, 128, 128, center_x, center_y, 128, 128)
         update_canvas()
         frame = (frame + 1) % 6
 
 open_canvas()
 character = load_image('SamuraiSheet.png')
+ground = load_image('TUK_GROUND.png')
 
 IDLE()
 
